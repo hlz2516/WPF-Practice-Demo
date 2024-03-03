@@ -30,3 +30,6 @@
 *.exe
 *.out
 *.app
+/WPF-Practice/.vs/WPF-Practice
+/WPF-Practice/WPF-Practice/bin/Debug
+/WPF-Practice/WPF-Practice/obj/Debug
