@@ -4,26 +4,53 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPF_Practice"
+        xmlns:system="clr-namespace:System;assembly=mscorlib"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Window.Resources>
+        <Style x:Key="RadioButtonLoginRole" TargetType="RadioButton">
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="IsChecked" Value="{x:Null}"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Foreground" Value="#555"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="RadioButton">
+                        <Border x:Name="border" Height="40" Width="100" BorderThickness="0 0 0 5" BorderBrush="Transparent">
+                            <Grid Background="Transparent">
+                                <TextBlock Foreground="{TemplateBinding Foreground}" Text="{TemplateBinding Content}" VerticalAlignment="Center" HorizontalAlignment="Center" TextAlignment="Center" />
+                            </Grid>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsChecked" Value="true">
+                                <Setter Property="Background"  Value="#FF08803B" TargetName="border"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <DataTemplate x:Key="menu_item">
+            <RadioButton Width="120" Height="30" Background="Blue" Style="{StaticResource RadioButtonLoginRole}" Cursor="Hand">
+            </RadioButton>
+        </DataTemplate>
+
         <ControlTemplate x:Key="layout_vertical">
             <Grid ShowGridLines="True">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="2*" />
                     <ColumnDefinition Width="8*" />
                 </Grid.ColumnDefinitions>
-                <Grid.Children>
-                    <StackPanel Grid.Column="0"  Margin="4" CanVerticallyScroll="True">
-                        <Button Height="30">布局设置</Button>
-                        <Button Height="30">背景切换</Button>
-                        <Button Height="30">留言板</Button>
+                <StackPanel Grid.Column="0"  Margin="4" CanVerticallyScroll="True">
+                        <RadioButton Height="30" Style="{StaticResource RadioButtonLoginRole}">布局设置</RadioButton>
+                        <RadioButton Height="30" Style="{StaticResource RadioButtonLoginRole}">背景切换</RadioButton>
+                        <RadioButton Height="30" Style="{StaticResource RadioButtonLoginRole}">留言板</RadioButton>
                     </StackPanel>
 
                     <DockPanel Grid.Column="1">
 
                     </DockPanel>
-                </Grid.Children>
             </Grid>
         </ControlTemplate>
 
@@ -33,20 +60,25 @@
                     <RowDefinition Height="1*"  />
                     <RowDefinition Height="9*" />
                 </Grid.RowDefinitions>
-                <Grid.Children>
-                    <StackPanel Grid.Row="0" Orientation="Horizontal">
-                        <Button Width="120">布局设置</Button>
-                        <Button Width="120">背景切换</Button>
-                        <Button Width="120">留言板</Button>
-                    </StackPanel>
-                    
-                    <DockPanel Grid.Row="1">
+                <StackPanel Grid.Row="0" Orientation="Horizontal">
+                    <RadioButton Width="120" Style="{StaticResource RadioButtonLoginRole}">布局设置</RadioButton>
+                    <RadioButton Width="120" Style="{StaticResource RadioButtonLoginRole}">背景切换</RadioButton>
+                    <RadioButton Width="120" Style="{StaticResource RadioButtonLoginRole}">留言板</RadioButton>
+                    <ItemsPresenter  />
+                </StackPanel>
 
-                    </DockPanel>
-                </Grid.Children>
+                <DockPanel Grid.Row="1">
+ 
+                </DockPanel>
             </Grid>
         </ControlTemplate>
     </Window.Resources>
 
-    <DataGrid  Template="{DynamicResource layout_horizental}"></DataGrid>
+    <ListBox x:Name="menu_list" Template="{DynamicResource layout_horizental}" ItemsSource="{Binding}">
+        <ListBox.ItemTemplate>
+            <DataTemplate>
+                <RadioButton Width="120" GroupName="test" Style="{StaticResource RadioButtonLoginRole}" Content="{Binding}" />
+            </DataTemplate>
+        </ListBox.ItemTemplate>
+    </ListBox>
 </Window>

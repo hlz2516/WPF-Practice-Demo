@@ -20,9 +20,15 @@ namespace WPF_Practice
     /// </summary>
     public partial class MainWindow : Window
     {
+        public List<string> Menu { get; set; }
+
         public MainWindow()
         {
             InitializeComponent();
+            Menu = new List<string>();
+            Menu.Add("布局设置");
+            Menu.Add("背景切换");
+            this.DataContext = Menu;
         }
     }
 }
