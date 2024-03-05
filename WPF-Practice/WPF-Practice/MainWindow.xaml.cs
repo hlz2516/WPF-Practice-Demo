@@ -20,15 +20,22 @@ namespace WPF_Practice
     /// </summary>
     public partial class MainWindow : Window
     {
-        public List<string> Menu { get; set; }
+        public static List<string> Menu { get; set; }
 
         public MainWindow()
         {
             InitializeComponent();
+            //数据源
             Menu = new List<string>();
             Menu.Add("布局设置");
             Menu.Add("背景切换");
-            this.DataContext = Menu;
+            //准备binding
+            //Binding binding = new Binding();
+            //binding.Source = Menu;
+            //binding.Path = new PropertyPath(".");
+            ////使用binding连接源与目标
+            //BindingOperations.SetBinding(this.tc, TabControl.ItemsSourceProperty, binding);
+            this.tc.DataContext = Menu;
         }
     }
 }
