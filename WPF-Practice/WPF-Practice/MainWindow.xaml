@@ -103,5 +103,8 @@
         <TabItem Header="布局设置">
             <local:LayoutSetup x:Name="layout_setup" />
         </TabItem>
+        <TabItem Header="背景设置">
+            <local:BackgroundSetup x:Name="bg_setup" />
+        </TabItem>
     </TabControl>
 </Window>

@@ -37,7 +37,16 @@ namespace WPF_Practice
             //BindingOperations.SetBinding(this.tc, TabControl.ItemsSourceProperty, binding);
             //this.tc.DataContext = Menu;
 
-            tc.AddHandler(Button.ClickEvent, new RoutedEventHandler(this.ButtonClicked));
+            tc.AddHandler(Button.ClickEvent, new RoutedEventHandler(ButtonClicked));
+            tc.AddHandler(BackgroundSetup.SetBackgroundImageEvent, new RoutedEventHandler(ApplyBackground));
+        }
+
+        private void ApplyBackground(object sender, RoutedEventArgs e)
+        {
+            if (e is SetBackgroundImageEventArgs be)
+            {
+                this.Background = new ImageBrush { ImageSource = be.BackgroundImage.Source };
+            }
         }
 
         private void ButtonClicked(object sender, RoutedEventArgs e)
