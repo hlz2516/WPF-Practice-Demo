@@ -26,16 +26,32 @@ namespace WPF_Practice
         {
             InitializeComponent();
             //数据源
-            Menu = new List<string>();
-            Menu.Add("布局设置");
-            Menu.Add("背景切换");
+            //Menu = new List<string>();
+            //Menu.Add("布局设置");
+            //Menu.Add("背景切换");
             //准备binding
             //Binding binding = new Binding();
             //binding.Source = Menu;
             //binding.Path = new PropertyPath(".");
             ////使用binding连接源与目标
             //BindingOperations.SetBinding(this.tc, TabControl.ItemsSourceProperty, binding);
-            this.tc.DataContext = Menu;
+            //this.tc.DataContext = Menu;
+
+            tc.AddHandler(Button.ClickEvent, new RoutedEventHandler(this.ButtonClicked));
+        }
+
+        private void ButtonClicked(object sender, RoutedEventArgs e)
+        {
+            //System.Diagnostics.Debug.WriteLine($"{(e.OriginalSource as FrameworkElement).Name}");
+            string clickedName = (e.OriginalSource as FrameworkElement).Name;
+            if (clickedName == "side_mode")
+            {
+                tc.TabStripPlacement = Dock.Left;
+            }
+            else if (clickedName == "top_mode")
+            {
+                tc.TabStripPlacement = Dock.Top;
+            }
         }
     }
 }

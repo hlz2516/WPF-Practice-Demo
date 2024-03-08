@@ -13,10 +13,10 @@
         </Grid.ColumnDefinitions>
         <Grid.Children>
             <DockPanel Grid.Column="0">
-                <Button FontSize="36">侧边栏模式</Button>
+                <Button x:Name="side_mode" FontSize="36">侧边栏模式</Button>
             </DockPanel>
             <DockPanel Grid.Column="1">
-                <Button FontSize="36">上边栏模式</Button>
+                <Button x:Name="top_mode" FontSize="36">上边栏模式</Button>
             </DockPanel>
         </Grid.Children>
     </Grid>
