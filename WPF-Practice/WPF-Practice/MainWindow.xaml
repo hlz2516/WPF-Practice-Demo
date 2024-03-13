@@ -99,7 +99,7 @@
             </Setter>
         </Style>
     </Window.Resources>
-    <TabControl Style="{DynamicResource TabControlStyle1}" x:Name="tc">
+    <TabControl Style="{DynamicResource TabControlStyle1}" x:Name="tc" Background="Transparent">
         <TabItem Header="布局设置">
             <local:LayoutSetup x:Name="layout_setup" />
         </TabItem>

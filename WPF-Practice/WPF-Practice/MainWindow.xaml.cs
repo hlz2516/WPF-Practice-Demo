@@ -36,17 +36,13 @@ namespace WPF_Practice
             ////使用binding连接源与目标
             //BindingOperations.SetBinding(this.tc, TabControl.ItemsSourceProperty, binding);
             //this.tc.DataContext = Menu;
-
             tc.AddHandler(Button.ClickEvent, new RoutedEventHandler(ButtonClicked));
-            tc.AddHandler(BackgroundSetup.SetBackgroundImageEvent, new RoutedEventHandler(ApplyBackground));
+            tc.AddHandler(BackgroundSetup.SetBackgroundImageEvent, new EventHandler<SetBackgroundImageEventArgs>(ApplyBackground));
         }
 
-        private void ApplyBackground(object sender, RoutedEventArgs e)
+        private void ApplyBackground(object sender, SetBackgroundImageEventArgs e)
         {
-            if (e is SetBackgroundImageEventArgs be)
-            {
-                this.Background = new ImageBrush { ImageSource = be.BackgroundImage.Source };
-            }
+            this.Background = new ImageBrush { ImageSource = e.BackgroundImage.Source };
         }
 
         private void ButtonClicked(object sender, RoutedEventArgs e)

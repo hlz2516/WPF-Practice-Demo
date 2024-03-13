@@ -21,8 +21,8 @@ namespace WPF_Practice
     public partial class BackgroundSetup : UserControl
     {
         public static readonly RoutedEvent SetBackgroundImageEvent = EventManager.RegisterRoutedEvent("SetBackgroundImage",
-        RoutingStrategy.Bubble,typeof(RoutedEventHandler),typeof(BackgroundSetup));
-
+        RoutingStrategy.Bubble,typeof(EventHandler<SetBackgroundImageEventArgs>),typeof(BackgroundSetup));
+        
         public event RoutedEventHandler SetBackgroundImage
         {
             add => AddHandler(SetBackgroundImageEvent, value);
@@ -42,6 +42,11 @@ namespace WPF_Practice
             Image bg = sender as Image;
             var args = new SetBackgroundImageEventArgs(bg);
             RaiseEvent(args);
+        }
+
+        private void WrapPanel_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            test2.Width = test2.Height = this.ActualWidth / 10;
         }
     }
 

@@ -5,10 +5,25 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:WPF_Practice"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800" Background="Transparent">
-    <WrapPanel Orientation="Horizontal">
-        <Border Width="100" Height="100" Background="Transparent">
-            <Image x:Name="test" Source="./Images/离心泵.jpg" Stretch="Fill" MouseDown="test_MouseDown"  />
-        </Border>
-    </WrapPanel>
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="60" />
+        </Grid.RowDefinitions>
+        <WrapPanel x:Name="wrap" Orientation="Horizontal" SizeChanged="WrapPanel_SizeChanged" Grid.Row="0">
+            <Border x:Name="test2" Width="100" Height="100">
+                <Border.Style>
+                    <Style>
+
+                    </Style>
+                </Border.Style>
+                <Image x:Name="test" Source="./Images/离心泵.jpg" Stretch="Fill" MouseDown="test_MouseDown"  />
+            </Border>
+        </WrapPanel>
+        <WrapPanel Grid.Row="1" VerticalAlignment="Center" ItemWidth="120" ItemHeight="40">
+            <Button Margin="8 0 8 0">添加</Button>
+            <Button  Margin="8 0 8 0">删除</Button>
+        </WrapPanel>
+    </Grid>
 </UserControl>
