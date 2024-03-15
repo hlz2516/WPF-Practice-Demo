@@ -59,7 +59,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="ImageBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="LayoutSetup.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ListBoxTest.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -74,8 +82,14 @@
     <Compile Include="BackgroundSetup.xaml.cs">
       <DependentUpon>BackgroundSetup.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ImageBox.xaml.cs">
+      <DependentUpon>ImageBox.xaml</DependentUpon>
+    </Compile>
     <Compile Include="LayoutSetup.xaml.cs">
       <DependentUpon>LayoutSetup.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ListBoxTest.xaml.cs">
+      <DependentUpon>ListBoxTest.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -101,6 +115,7 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="1_整体布局设置.md" />
+    <None Include="2_1_选中子元素高亮.md" />
     <None Include="2_背景设置.md" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

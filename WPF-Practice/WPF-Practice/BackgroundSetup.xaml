@@ -12,13 +12,11 @@
             <RowDefinition Height="60" />
         </Grid.RowDefinitions>
         <WrapPanel x:Name="wrap" Orientation="Horizontal" SizeChanged="WrapPanel_SizeChanged" Grid.Row="0">
-            <Border x:Name="test2" Width="100" Height="100">
-                <Border.Style>
-                    <Style>
-
-                    </Style>
-                </Border.Style>
-                <Image x:Name="test" Source="./Images/离心泵.jpg" Stretch="Fill" MouseDown="test_MouseDown"  />
+            <Border Width="100" Height="100" Margin="2,2,2,2">
+                <Image Source="./Images/离心泵.jpg" Stretch="Fill" MouseDown="test_MouseDown"  />
+            </Border>
+            <Border Width="100" Height="100" Margin="2,2,2,2">
+                <Image Source="./Images/离心泵.jpg" Stretch="Fill" MouseDown="test_MouseDown"  />
             </Border>
         </WrapPanel>
         <WrapPanel Grid.Row="1" VerticalAlignment="Center" ItemWidth="120" ItemHeight="40">

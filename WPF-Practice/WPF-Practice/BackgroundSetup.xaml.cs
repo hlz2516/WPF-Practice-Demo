@@ -33,20 +33,31 @@ namespace WPF_Practice
         public BackgroundSetup()
         {
             InitializeComponent();
-            
+            this.AddHandler(ImageBox.MouseDownEvent, new RoutedEventHandler(ImageBox_Selected));
+            for (int i = 0; i < 5; i++)
+            {
+                var imgBox = new ImageBox();
+                wrap.Children.Add(imgBox);
+            }
         }
 
         private void test_MouseDown(object sender, MouseButtonEventArgs e)
         {
             //System.Diagnostics.Debug.WriteLine(sender.GetType().Name);
-            Image bg = sender as Image;
-            var args = new SetBackgroundImageEventArgs(bg);
-            RaiseEvent(args);
+            //Image bg = sender as Image;
+            //var args = new SetBackgroundImageEventArgs(bg);
+            //RaiseEvent(args);
+            
         }
 
         private void WrapPanel_SizeChanged(object sender, SizeChangedEventArgs e)
         {
-            test2.Width = test2.Height = this.ActualWidth / 10;
+
+        }
+
+        private void ImageBox_Selected(object sender, RoutedEventArgs e)
+        {
+            Console.WriteLine(e.OriginalSource);
         }
     }
 
