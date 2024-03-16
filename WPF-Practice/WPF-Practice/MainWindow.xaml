@@ -4,7 +4,6 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPF_Practice"
-        xmlns:system="clr-namespace:System;assembly=mscorlib"
         mc:Ignorable="d"
         Title="MainWindow" Height="600" Width="900">
     <Window.Resources>
@@ -30,7 +29,7 @@
                                 <RowDefinition x:Name="RowDefinition0" Height="Auto"/>
                                 <RowDefinition x:Name="RowDefinition1" Height="*"/>
                             </Grid.RowDefinitions>
-                            <TabPanel x:Name="headerPanel" Background="Transparent" Grid.Column="0" IsItemsHost="true" Margin="1,6,1,6" Grid.Row="0" KeyboardNavigation.TabIndex="1" Panel.ZIndex="1"/>
+                            <TabPanel x:Name="headerPanel" Background="Transparent" Grid.Column="0" IsItemsHost="true" Margin="2,2,2,0" Grid.Row="0" KeyboardNavigation.TabIndex="1" Panel.ZIndex="1"/>
                             <Border x:Name="contentPanel" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Grid.Column="0" KeyboardNavigation.DirectionalNavigation="Contained" Grid.Row="1" KeyboardNavigation.TabIndex="2" KeyboardNavigation.TabNavigation="Local">
                                 <ContentPresenter x:Name="PART_SelectedContentHost" ContentSource="SelectedContent" Margin="{TemplateBinding Padding}" SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
                             </Border>
@@ -73,25 +72,25 @@
                 </Setter.Value>
             </Setter>
         </Style>
-
         <Style TargetType="{x:Type TabItem}">
+            <Setter Property="HorizontalContentAlignment" Value="Center" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+            <Setter Property="BorderBrush" Value="Black" />
+            <Setter Property="BorderThickness" Value="2" />
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="{x:Type TabItem}">
-                        <Border x:Name="PART_Border" BorderThickness="2" BorderBrush="LightGray" Margin="0,0,1,0" CornerRadius="4">
-                            <Border.Background>
-                                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                                    <!-- 设置渐变停止点及对应的颜色 -->
-                                    <GradientStop Offset="0.0" Color="Orange"/>
-                                    <GradientStop Offset="1.0" Color="Yellow"/>
-                                </LinearGradientBrush>
-                            </Border.Background>
-                            <ContentPresenter ContentSource="Header"  VerticalAlignment="{TemplateBinding VerticalContentAlignment}" HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" TextBlock.Foreground="Black" TextBlock.FontSize="18" Margin="6,6,6,6" />
+                        <Border x:Name="myborder" MinWidth="100" MinHeight="30" 
+                                Margin="0 4 4 4" CornerRadius="4" Background="Transparent"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}">
+                            <ContentPresenter ContentSource="Header"
+                                              HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
                         </Border>
-
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsSelected" Value="True">
-                                <Setter TargetName="PART_Border" Property="BorderBrush" Value="Black" />
+                                <Setter TargetName="myborder" Property="BorderBrush" Value="Red" />
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
@@ -99,12 +98,18 @@
             </Setter>
         </Style>
     </Window.Resources>
-    <TabControl Style="{DynamicResource TabControlStyle1}" x:Name="tc" Background="Transparent">
-        <TabItem Header="布局设置">
-            <local:LayoutSetup x:Name="layout_setup" />
+    <TabControl Style="{DynamicResource TabControlStyle1}">
+        <TabItem Header="Tab 1">
+            <!-- 第一个标签页的内容 -->
+            <Grid>
+                <!-- 在此处添加第一个标签页的控件 -->
+            </Grid>
         </TabItem>
-        <TabItem Header="背景设置">
-            <local:BackgroundSetup x:Name="bg_setup" />
+        <TabItem Header="Tab 2">
+            <!-- 第二个标签页的内容 -->
+            <Grid>
+                <!-- 在此处添加第二个标签页的控件 -->
+            </Grid>
         </TabItem>
     </TabControl>
 </Window>
